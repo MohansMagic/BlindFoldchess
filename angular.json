@@ -15,12 +15,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-    "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/BlindFold-Chess",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -29,12 +28,15 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
-              }
+                "input": "src/assets",
+                "output": "/assets"
+              },
+              "src/favicon.ico"
             ],
             "styles": [
               "src/styles.scss"
-            ]
+            ],
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -61,22 +63,23 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular/build:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "BlindFold-Chess:build:production"
+              "browserTarget": "BlindFold-Chess:build:production"
             },
             "development": {
-              "buildTarget": "BlindFold-Chess:build:development"
+              "browserTarget": "BlindFold-Chess:build:development"
             }
           },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular/build:extract-i18n"
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {}
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": [
               "zone.js",
@@ -87,15 +90,19 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
-              }
+                "input": "src/assets",
+                "output": "/assets"
+              },
+              "src/favicon.ico"
             ],
             "styles": [
               "src/styles.scss"
-            ]
+            ],
+            "scripts": []
           }
         }
       }
     }
-  }
+  },
+  "defaultProject": "BlindFold-Chess"
 }
