@@ -12,14 +12,18 @@
     <div
       *ngFor="let piece of row; let j = index"
       class="square"
-      [ngClass]="(i + j) % 2 === 0 ? 'beige' : 'brown'">
+      [ngClass]="[
+        (i + j) % 2 === 0 ? 'beige' : 'brown',
+        selectedSquare === getSquareName(i, j) ? 'selected' : ''
+      ]"
+      (click)="onSquareClick(i, j)">
       <img *ngIf="piece && !blindfold" [src]="getPieceUrl(piece)" width="32" height="32" />
     </div>
   </div>
 </div>
 
 <div style="margin-top: 16px;">
-  <input [(ngModel)]="moveInput" placeholder="e4, Nf3, exd5, ..." />
+  <input [(ngModel)]="moveInput" placeholder="e4, Nf3, exd5, e2e4, ..." />
   <button (click)="movePiece(moveInput)">Move</button>
   <span style="color: red; margin-left: 12px;" *ngIf="moveError">{{ moveError }}</span>
 </div>
