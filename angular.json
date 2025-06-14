@@ -18,6 +18,7 @@
     "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/BlindFold-Chess",
+            "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
