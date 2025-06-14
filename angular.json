@@ -19,6 +19,7 @@
           "options": {
             "outputPath": "dist/BlindFold-Chess",
             "index": "src/index.html",
+            "main": "src/main.ts",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
